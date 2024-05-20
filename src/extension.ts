@@ -5,6 +5,8 @@ function getPassword(): string | undefined {
   return process.env.FILE_PASSWORD;
 }
 
+const PREFIX = "ENCRYPTED___";
+
 export function activate(context: vscode.ExtensionContext) {
   let encryptDisposable = vscode.commands.registerCommand(
     "encrypt.file",
@@ -14,6 +16,10 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const text = document.getText();
 
+        if (text.substring(0, PREFIX.length) === PREFIX) {
+          vscode.window.showErrorMessage("File already encrypted.");
+          return;
+        }
         const password = getPassword();
         if (!password) {
           vscode.window.showErrorMessage(
@@ -22,7 +28,8 @@ export function activate(context: vscode.ExtensionContext) {
           return;
         }
 
-        const encrypted = CryptoJS.AES.encrypt(text, password).toString();
+        const encrypted =
+          PREFIX + CryptoJS.AES.encrypt(text, password).toString();
 
         await editor.edit((editBuilder) => {
           const start = new vscode.Position(0, 0);
@@ -44,6 +51,11 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const encryptedText = document.getText();
 
+        if (encryptedText.substring(0, PREFIX.length) !== PREFIX) {
+          vscode.window.showErrorMessage("Only can decrypt an encrypted file");
+          return;
+        }
+
         const password = getPassword();
         if (!password) {
           vscode.window.showErrorMessage(
@@ -54,7 +66,10 @@ export function activate(context: vscode.ExtensionContext) {
 
         let decrypted = "";
         try {
-          const bytes = CryptoJS.AES.decrypt(encryptedText, password);
+          const bytes = CryptoJS.AES.decrypt(
+            encryptedText.substring(PREFIX.length),
+            password
+          );
           decrypted = bytes.toString(CryptoJS.enc.Utf8);
         } catch (e) {
           vscode.window.showErrorMessage(
