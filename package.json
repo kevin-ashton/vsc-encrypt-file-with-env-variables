@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:encrypt.file"
+    "onCommand:encrypt.file",
+    "onCommand:decrypt.file"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -18,6 +19,10 @@
       {
         "command": "encrypt.file",
         "title": "Encrypt File"
+      },
+      {
+        "command": "decrypt.file",
+        "title": "Decrypt File"
       }
     ]
   },
