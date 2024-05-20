@@ -4,5 +4,6 @@ A plug that allows you to set an env variable of `FILE_PASSWORD` and then with a
 
 ## Commands
 
-`encrypt.file` - Encrypt file with AES encription given the env value of `FILE_PASSWORD`
-`decrypt.file` - Decrypt file with AES encription given the env value of `FILE_PASSWORD`
+* `encrypt.file` - Encrypt file with AES encription given the env value of `FILE_PASSWORD`
+
+* `decrypt.file` - Decrypt file with AES encription given the env value of `FILE_PASSWORD`
