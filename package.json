@@ -1,6 +1,6 @@
 {
-  "name": "encrypt-file-with-env-variables",
-  "displayName": "encrypt-file-with-env-variables",
+  "name": "vsc-encrypt-file-with-env-variables",
+  "displayName": "Encrypt File With Env Variables",
   "description": "Allows you to encrypt a file using a password. If a shares password you can store it in an env variable. ",
   "version": "0.0.1",
   "engines": {
@@ -32,7 +32,13 @@
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "note1:install-vce": "npm install -g @vscode/vsce",
+    "note2":"To run a vsc extension you just debug the extensions.ts file",
+    "debug": "f5 (or debug) in extensions.ts  (start yarn watch as well)",
+    "build-for-marketplace": "vsce package",
+    "open-marketplace": "open https://marketplace.visualstudio.com/manage/publishers/kevin-ashton",
+    "note3":"Upload the new vsix file manually. Not worth tying to automate this at this point."
   },
   "devDependencies": {
     "@types/mocha": "^10.0.6",

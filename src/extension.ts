@@ -1,6 +1,10 @@
 import * as vscode from "vscode";
 import * as CryptoJS from "crypto-js";
 
+function getPassword(): string | undefined {
+  return process.env.FILE_PASSWORD;
+}
+
 export function activate(context: vscode.ExtensionContext) {
   let encryptDisposable = vscode.commands.registerCommand(
     "encrypt.file",
@@ -10,7 +14,14 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const text = document.getText();
 
-        const password = "cat123";
+        const password = getPassword();
+        if (!password) {
+          vscode.window.showErrorMessage(
+            "Environment variable FILE_PASSWORD is not defined."
+          );
+          return;
+        }
+
         const encrypted = CryptoJS.AES.encrypt(text, password).toString();
 
         await editor.edit((editBuilder) => {
@@ -33,7 +44,14 @@ export function activate(context: vscode.ExtensionContext) {
         const document = editor.document;
         const encryptedText = document.getText();
 
-        const password = "cat123";
+        const password = getPassword();
+        if (!password) {
+          vscode.window.showErrorMessage(
+            "Environment variable FILE_PASSWORD is not defined."
+          );
+          return;
+        }
+
         let decrypted = "";
         try {
           const bytes = CryptoJS.AES.decrypt(encryptedText, password);
