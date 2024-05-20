@@ -2,13 +2,15 @@
   "name": "vsc-encrypt-file-with-env-variables",
   "displayName": "Encrypt File With Env Variables",
   "description": "Allows you to encrypt a file using a password. If a shares password you can store it in an env variable. ",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "publisher": "kevin-ashton",
   "engines": {
     "vscode": "^1.89.0"
   },
   "categories": [
     "Other"
   ],
+  "icon": "images/icon.png",
   "activationEvents": [
     "onCommand:encrypt.file",
     "onCommand:decrypt.file"
