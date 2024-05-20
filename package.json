@@ -2,7 +2,7 @@
   "name": "vsc-encrypt-file-with-env-variables",
   "displayName": "Encrypt File With Env Variables",
   "description": "Allows you to encrypt a file using a password. This is useful when you have a variety of files that will share the same encryption key. An example use case might be encrypting personal documents, such a journal, where you want to avoid typing in the password each time you want to encrypt/decrypt a document.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "publisher": "kevin-ashton",
   "engines": {
     "vscode": "^1.89.0"
@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevin-ashton/vsc-nanoid-snippets"
+    "url": "https://github.com/kevin-ashton/vsc-encrypt-file-with-env-variables"
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
