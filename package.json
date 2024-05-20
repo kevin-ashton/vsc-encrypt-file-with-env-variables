@@ -37,6 +37,7 @@
     "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test",
+    "-----": "-----",
     "note1:install-vce": "npm install -g @vscode/vsce",
     "note2":"To run a vsc extension you just debug the extensions.ts file",
     "debug": "f5 (or debug) in extensions.ts  (start yarn watch as well)",
