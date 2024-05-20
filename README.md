@@ -10,4 +10,4 @@ This VsCode extension allows you to set an env variable of `FILE_PASSWORD` and t
 
 ## Demo
 
-<img src="images/example.gif" width="600"/>
+<img src="encrypt-decrypt-example.gif" width="600"/>
